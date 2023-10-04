@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: image-pvc
+  namespace: image
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: sc-image
+  volumeName: imagepv
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      container_type: store
+      namespace: image

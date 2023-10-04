@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-demo-svc
+  labels:
+    app: aks-demo
+    namespace: demo
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 31000
+    protocol: TCP
+  selector:
+    app: aks-demo

@@ -1,0 +1,20 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-image
+provisioner: kubernetes.io/azure-file
+allowVolumeExpansion: true
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
+parameters:
+  skuName: Standard_RAGRS
+  storageAccount: imagestoreforstudy
+  location: eastus
+  resourceGroup: STORAGE
+reclaimPolicy: Retain

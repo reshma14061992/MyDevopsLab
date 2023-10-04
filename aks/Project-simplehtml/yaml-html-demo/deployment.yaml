@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-demo-deploy
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: aks-demo
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: aks-demo
+    spec:
+      containers:
+      - name: aks-demo-container
+        image: acrforstudy.azurecr.io/htmlimage:latest
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
+        ports:
+        - containerPort: 80

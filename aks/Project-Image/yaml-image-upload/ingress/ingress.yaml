@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aks-image-ingress
+  namespace: image
+spec:
+  rules:
+  - host: zerotoheroaks.westeurope.cloudapp.azure.com 
+    http:
+      paths:
+      - path: /upload
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-image-svc
+            port:
+              number: 80

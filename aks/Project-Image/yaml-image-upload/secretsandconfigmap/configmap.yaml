@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-image
+  namespace: image
+data:
+  cutomepath: '/imagefileshare'
